@@ -8,7 +8,7 @@ The application uses **DistilBART**, a lightweight version of BART fine-tuned fo
 
 Try the deployed application here:
 
-[AI Text Summarizer](YOUR_STREAMLIT_APP_URL)
+[AI Text Summarizer](https://ai-text-summarizer-gdrbvzeygwfhh3ft8an2ok.streamlit.app/)
 
 ---
 
