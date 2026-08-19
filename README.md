@@ -1,66 +1,38 @@
-# ✨ AI Text Summarizer
+# AI Text Summarizer
 
-An AI-powered text summarization application that transforms long text into concise, readable summaries using a pretrained Transformer model.
+A simple AI-powered text summarization app built with Python, Hugging Face Transformers, and Streamlit.
 
-The application uses **DistilBART**, a lightweight version of BART fine-tuned for news summarization, through the Hugging Face Transformers library. A Streamlit interface provides a simple and interactive way for users to enter text and generate summaries.
+I built this project to get more practical experience working with pretrained AI models and to understand what happens between giving a model some text and getting a useful result back.
 
-## 🌐 Live Demo
+## Live Demo
 
-Try the deployed application here:
+[Try the AI Text Summarizer](https://ai-text-summarizer-gdrbvzeygwfhh3ft8an2ok.streamlit.app/)
 
-[AI Text Summarizer](https://ai-text-summarizer-gdrbvzeygwfhh3ft8an2ok.streamlit.app/)
+## What it does
 
----
+The app takes a piece of text and generates a shorter version that keeps the main points.
 
-## 📌 Project Overview
+It works with both shorter and longer pieces of text. For longer inputs, the text is split into smaller chunks before being summarized.
 
-Reading and understanding large amounts of text can be time-consuming. This project demonstrates how Natural Language Processing (NLP) and Transformer-based models can be used to automatically extract the most important information from a piece of text.
+## How it works
 
-The application accepts user-provided text, processes it using a pretrained Transformer model, and returns a concise summary.
+The project uses the `sshleifer/distilbart-cnn-12-6` model from Hugging Face.
 
-For longer inputs, the application automatically divides the text into smaller token-based chunks, summarizes each chunk, combines the intermediate summaries, and performs a final summarization pass.
-
----
-
-## 🚀 Features
-
-- 🤖 AI-powered text summarization
-- 🧠 Pretrained Transformer model using DistilBART
-- ✂️ Automatic token-based chunking for long documents
-- 🔄 Multi-stage summarization for longer inputs
-- 📊 Displays input and summary statistics
-- 📉 Calculates approximate percentage reduction in text
-- 🎨 Interactive Streamlit interface
-- ⚡ Runs locally using CPU
-- ☁️ Deployed as a web application
-
----
-
-## 🧠 How It Works
-
-The application follows this pipeline:
+The basic flow is:
 
 ```text
-User enters text
-       ↓
+Text entered by user
+        ↓
 Tokenization
-       ↓
-Check input length
-       ↓
- ┌───────────────┐
- │ Short text?   │
- └───────┬───────┘
-         │
-    ┌────┴────┐
-    ↓         ↓
-   YES        NO
-    ↓         ↓
-Summarize   Split into chunks
-              ↓
-       Summarize each chunk
-              ↓
-       Combine summaries
-              ↓
-       Final summarization
-              ↓
-         Final summary
+        ↓
+Check text length
+        ↓
+Short text → Summarize directly
+        ↓
+Long text → Split into chunks
+        ↓
+Summarize each chunk
+        ↓
+Combine the summaries
+        ↓
+Generate final summary
